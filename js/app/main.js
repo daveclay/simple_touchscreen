@@ -33,13 +33,13 @@ define([
         var self = $.extend(this, new events.AbstractEventSource());
         var selected = false;
 
-        var nameUI = ui.button("person-name");
+        var nameUI = ui.span("person-name");
         nameUI.text(person.getName());
-        nameUI.click(function() {
-            self.toggleName();
-        });
 
         var uiElement = ui.div("person-display");
+        uiElement.click(function() {
+            self.toggleName();
+        });
         uiElement.append(nameUI);
 
         this.getUI = function() {
@@ -47,9 +47,8 @@ define([
         };
 
         this.toggleName = function() {
-            selected = !selected;
-            if (selected) {
-                nameUI.addClass("person-name-selected");
+            if ( ! selected) {
+                this.select();
                 this.trigger("select", this);
             } else {
                 this.deselect();
@@ -57,8 +56,13 @@ define([
             }
         };
 
+        this.select = function() {
+            uiElement.addClass("person-display-selected");
+            selected = true;
+        };
+
         this.deselect = function() {
-            nameUI.removeClass("person-name-selected");
+            uiElement.removeClass("person-display-selected");
             selected = false;
         };
     }
