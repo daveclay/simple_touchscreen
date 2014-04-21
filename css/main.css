@@ -17,14 +17,27 @@
     color: #5c5c5c;
     left: 0px;
 
+    /*
     -webkit-transition: all .5s ease-out;
     -moz-transition: all .5s ease-out;
     -o-transition: all .5s ease-out;
     transition: all .5s ease-out;
+    */
+}
+
+@-webkit-keyframes play {
+    to {
+        color: white;
+        background: #293f87;
+        height: 400px;
+    }
 }
 
 .person-display-selected {
-    color: white;
-    background: #293f87;
-    left: 200px;
+    -webkit-animation: play .8s ease-out;
+    -moz-animation: play .8s ease-out;
+    -ms-animation: play .8s ease-out;
+    -o-animation: play .8s ease-out;
+    animation: play .8s ease-out;
+    -webkit-animation-fill-mode:forwards; /* Safari and Chrome */
 }

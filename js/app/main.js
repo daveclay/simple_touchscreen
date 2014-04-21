@@ -37,9 +37,22 @@ define([
         nameUI.text(person.getName());
 
         var uiElement = ui.div("person-display");
+        /*
+        uiElement.onTransitionEnd(function(event) {
+            console.log(event.originalEvent.timestamp);
+        });
+         uiElement.on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
+         alert(event.originalEvent.propertyName);
+         });
+        */
+        uiElement.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(event) {
+            alert(event.originalEvent.propertyName);
+        });
+
         uiElement.click(function() {
             self.toggleName();
         });
+
         uiElement.append(nameUI);
 
         this.getUI = function() {

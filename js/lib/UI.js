@@ -6,6 +6,14 @@ define([
 
         function UI() {
 
+            $.fn.extend({
+                onTransitionEnd: function(callback) {
+                    this.on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
+                        callback(event);
+                    });
+                }
+            });
+
             var newElement = function(elemType, cssClass, id) {
                 var elem = $("<" + elemType + "/>");
                 if (cssClass) {
@@ -27,7 +35,7 @@ define([
 
             this.span = function(cssClass, id) {
                 return newElement("span", cssClass, id);
-            }
+            };
         }
 
         return new UI();
