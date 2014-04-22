@@ -6,10 +6,25 @@ define([
 
         function UI() {
 
+            var triggeredAnimationEndEventIds = {};
+            var triggeredTransitionEndEventIds = {};
+
             $.fn.extend({
-                onTransitionEnd: function(callback) {
+                onceOnTransitionEnd: function(callback) {
                     this.on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
-                        callback(event);
+                        if (!triggeredAnimationEndEventIds[event.timeStamp]) {
+                            triggeredAnimationEndEventIds[event.timestamp] = true;
+                            callback(event);
+                        }
+                    });
+                },
+
+                onceOnAnimationEnd: function(callback) {
+                    this.on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(event) {
+                        if (!triggeredTransitionEndEventIds[event.timestamp]) {
+                            triggeredTransitionEndEventIds[event.timeStamp] = true;
+                            callback(event);
+                        }
                     });
                 }
             });
@@ -27,6 +42,12 @@ define([
 
             this.button = function(cssClass, id) {
                 return newElement("button", cssClass, id);
+            };
+
+            this.img = function(src, cssClass, id) {
+                var element = newElement("img", cssClass, id);
+                element.attr("src", src);
+                return element;
             };
 
             this.div = function(cssClass, id) {

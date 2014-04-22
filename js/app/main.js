@@ -24,9 +24,18 @@ define([
             return data.name;
         };
 
-        this.getImage = function() {
-            return config.getImagePath() + this.getId();
+        this.getDonation = function() {
+            return data.donation;
         };
+
+        this.getBio = function() {
+            return data.bio;
+        };
+
+        this.getPhoto = function() {
+            return config.getImagePath() + this.getId() + ".jpg";
+        };
+
     }
 
     function PersonUI(person) {
@@ -36,17 +45,20 @@ define([
         var nameUI = ui.span("person-name");
         nameUI.text(person.getName());
 
+        var bioUI = ui.div("person-bio");
+        bioUI.text(person.getBio());
+
+        var donationUI = ui.div("person-donation");
+        donationUI.text(person.getDonation());
+
+        var photoUI = ui.div("person-photo-container");
+        var img = ui.img(person.getPhoto(), "person-photo");
+        photoUI.append(img);
+
         var uiElement = ui.div("person-display");
-        /*
-        uiElement.onTransitionEnd(function(event) {
-            console.log(event.originalEvent.timestamp);
-        });
-         uiElement.on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function(event) {
-         alert(event.originalEvent.propertyName);
-         });
-        */
-        uiElement.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(event) {
-            alert(event.originalEvent.propertyName);
+        uiElement.onceOnAnimationEnd(function(event) {
+            bioUI.addClass("person-bio-selected");
+            // bioUI.removeClass("person-bio-selected");
         });
 
         uiElement.click(function() {
@@ -54,6 +66,9 @@ define([
         });
 
         uiElement.append(nameUI);
+        uiElement.append(donationUI);
+        uiElement.append(bioUI);
+        uiElement.append(photoUI);
 
         this.getUI = function() {
             return uiElement;
@@ -71,10 +86,12 @@ define([
 
         this.select = function() {
             uiElement.addClass("person-display-selected");
+            uiElement.removeClass("person-display-deselected");
             selected = true;
         };
 
         this.deselect = function() {
+            uiElement.addClass("person-display-deselected");
             uiElement.removeClass("person-display-selected");
             selected = false;
         };

@@ -1,9 +1,29 @@
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .person-display span {
     position: relative;
     top: 25%;
     font-size: 72px;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
+}
+
+.person-donation {
+    display: inline-block;
+}
+
+.person-bio {
+    width: 400px;
+    text-align: left;
+    margin-left: 36%;
+    opacity: 0;
 }
 
 .person-display {
@@ -15,29 +35,69 @@
 
     background-color: #c0c0c0;
     color: #5c5c5c;
-    left: 0px;
-
-    /*
-    -webkit-transition: all .5s ease-out;
-    -moz-transition: all .5s ease-out;
-    -o-transition: all .5s ease-out;
-    transition: all .5s ease-out;
-    */
+    left: 0;
 }
 
-@-webkit-keyframes play {
-    to {
+@-webkit-keyframes deselectPerson {
+    from {
         color: white;
         background: #293f87;
-        height: 400px;
+        height: 500px;
+    }
+    to {
+        background-color: #c0c0c0;
+        color: #5c5c5c;
+        left: 0;
     }
 }
 
-.person-display-selected {
-    -webkit-animation: play .8s ease-out;
-    -moz-animation: play .8s ease-out;
-    -ms-animation: play .8s ease-out;
-    -o-animation: play .8s ease-out;
-    animation: play .8s ease-out;
+@-webkit-keyframes selectPerson {
+    from {
+        background-color: #c0c0c0;
+        color: #5c5c5c;
+        left: 0;
+    }
+    to {
+        color: white;
+        background: #293f87;
+        height: 500px;
+    }
+}
+
+@-webkit-keyframes selectPersonBio {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.person-bio-selected {
+    -webkit-animation: selectPersonBio .8s ease-out;
+    -moz-animation: selectPersonBio .8s ease-out;
+    -ms-animation: selectPersonBio .8s ease-out;
+    -o-animation: selectPersonBio .8s ease-out;
+    animation: selectPersonBio .8s ease-out;
     -webkit-animation-fill-mode:forwards; /* Safari and Chrome */
 }
+
+.person-display-selected {
+    -webkit-animation: selectPerson .8s ease-out;
+    -moz-animation: selectPerson .8s ease-out;
+    -ms-animation: selectPerson .8s ease-out;
+    -o-animation: selectPerson .8s ease-out;
+    animation: selectPerson .8s ease-out;
+    -webkit-animation-fill-mode:forwards; /* Safari and Chrome */
+}
+
+.person-display-deselected {
+    -webkit-animation: deselectPerson .8s ease-out;
+    -moz-animation: deselectPerson .8s ease-out;
+    -ms-animation: deselectPerson .8s ease-out;
+    -o-animation: deselectPerson .8s ease-out;
+    animation: deselectPerson .8s ease-out;
+    -webkit-animation-fill-mode:forwards; /* Safari and Chrome */
+}
+
+
