@@ -115,6 +115,9 @@ define([
         var uiElement = ui.div("display");
         var personDisplays = [];
 
+        var previousTop = 0;
+        var top = 0;
+
         var hammertime = Hammer(uiElement, {
             transform_always_block: true,
             transform_min_scale: 1,
@@ -123,8 +126,67 @@ define([
             drag_min_distance: 0
         });
 
-        hammertime.on('swipeup swipedown', function(ev) {
-            console.log("swiping " + ev);
+        hammertime.on('dragup dragdown swipeup swipedown', function(ev) {
+            ev.gesture.preventDefault();
+            switch(ev.type) {
+                case 'dragup':
+                case 'dragdown':
+                    /*
+                    // stick to the finger
+                    var pane_offset = -(100/pane_count)*current_pane;
+                    var drag_offset = ((100/pane_width)*ev.gesture.deltaX) / pane_count;
+
+                    // slow down at the first and last pane
+                    if((current_pane == 0 && ev.gesture.direction == "down") ||
+                        (current_pane == pane_count-1 && ev.gesture.direction == "up")) {
+                        drag_offset *= .4;
+                    }
+
+                    setContainerOffset(drag_offset + pane_offset);
+                    */
+                    top = ev.gesture.deltaY;
+                    var transform = "translate3d(0px," + top + "px, 0)";
+                    uiElement.css({
+                        WebkitTransform: transform
+                    });
+                    /*
+                    uiElement.style.transform = transform;
+                    uiElement.style.oTransform = transform;
+                    uiElement.style.msTransform = transform;
+                    uiElement.style.mozTransform = transform;
+                    uiElement.style.webkitTransform = transform;
+                    */
+                    break;
+
+                case 'swipeup':
+                    console.log("swipeup");
+                    ev.gesture.stopDetect();
+                    break;
+
+                case 'swipedown':
+                    console.log("swipedown");
+                    ev.gesture.stopDetect();
+                    break;
+
+                case 'release':
+                    // more then 50% moved, navigate
+                    previousTop = top;
+                    /*
+                    if(Math.abs(ev.gesture.deltaX) > pane_width/2) {
+                        if(ev.gesture.direction == 'right') {
+                            self.prev();
+                        } else {
+                            self.next();
+                        }
+                    }
+                    else {
+                        self.showPane(current_pane, true);
+                    }
+                    */
+                    break;
+            }
+
+            console.log("top: " + top);
         });
 
         this.getUI = function() {
