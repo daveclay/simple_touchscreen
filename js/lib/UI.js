@@ -26,6 +26,11 @@ define([
                             callback(event);
                         }
                     });
+                },
+
+                containsCssClass: function(cssClass) {
+                    var cssClasses = this.attr("class").split(" ");
+                    return _.contains(cssClasses, cssClass);
                 }
             });
 

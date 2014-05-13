@@ -1,12 +1,14 @@
 define([
     "underscore",
     "jquery",
+    "hammer",
     "ui",
     "events",
     "app/config",
     "app/people"
 ], function(_,
             $,
+            hammer,
             ui,
             events,
             config,
@@ -42,33 +44,40 @@ define([
         var self = $.extend(this, new events.AbstractEventSource());
         var selected = false;
 
-        var nameUI = ui.span("person-name");
+        var nameUI = ui.div("person-name");
         nameUI.text(person.getName());
-
-        var bioUI = ui.div("person-bio");
-        bioUI.text(person.getBio());
 
         var donationUI = ui.div("person-donation");
         donationUI.text(person.getDonation());
+
+        var nameContainerUI = ui.div("person-name-container");
+        nameContainerUI.append(nameUI);
+        nameContainerUI.append(donationUI);
+
+        var bioUI = ui.div("person-bio");
+        bioUI.text(person.getBio());
 
         var photoUI = ui.div("person-photo-container");
         var img = ui.img(person.getPhoto(), "person-photo");
         photoUI.append(img);
 
+        var infoUI = ui.div("person-info");
+        infoUI.append(photoUI);
+        infoUI.append(bioUI);
+
         var uiElement = ui.div("person-display");
         uiElement.onceOnAnimationEnd(function(event) {
-            bioUI.addClass("person-bio-selected");
-            // bioUI.removeClass("person-bio-selected");
+            if (selected) {
+                infoUI.addClass("person-info-selected");
+            }
         });
 
         uiElement.click(function() {
             self.toggleName();
         });
 
-        uiElement.append(nameUI);
-        uiElement.append(donationUI);
-        uiElement.append(bioUI);
-        uiElement.append(photoUI);
+        uiElement.append(nameContainerUI);
+        uiElement.append(infoUI);
 
         this.getUI = function() {
             return uiElement;
@@ -91,9 +100,13 @@ define([
         };
 
         this.deselect = function() {
-            uiElement.addClass("person-display-deselected");
-            uiElement.removeClass("person-display-selected");
-            selected = false;
+            if (selected) {
+                uiElement.addClass("person-display-deselected");
+                uiElement.removeClass("person-display-selected");
+                infoUI.addClass("person-info-deselected");
+                infoUI.removeClass("person-info-selected");
+                selected = false;
+            }
         };
     }
 
@@ -101,6 +114,18 @@ define([
         var self = this;
         var uiElement = ui.div("display");
         var personDisplays = [];
+
+        var hammertime = Hammer(uiElement, {
+            transform_always_block: true,
+            transform_min_scale: 1,
+            drag_block_horizontal: true,
+            drag_block_vertical: true,
+            drag_min_distance: 0
+        });
+
+        hammertime.on('swipeup swipedown', function(ev) {
+            console.log("swiping " + ev);
+        });
 
         this.getUI = function() {
             return uiElement;

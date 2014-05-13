@@ -7,23 +7,35 @@ body {
     user-select: none;
 }
 
-.person-display span {
-    position: relative;
-    top: 25%;
+.person-name {
     font-size: 72px;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
+}
+
+.person-name-container {
 }
 
 .person-donation {
     display: inline-block;
 }
 
-.person-bio {
-    width: 400px;
+.person-info {
     text-align: left;
     margin-left: 36%;
     opacity: 0;
+}
+
+.person-photo-container {
+    display: inline-block;
+    position: relative;
+    top: 0;
+}
+
+.person-bio {
+    display: inline-block;
+    width: 400px;
+    text-align: left;
 }
 
 .person-display {
@@ -73,7 +85,7 @@ body {
     }
 }
 
-.person-bio-selected {
+.person-info-selected {
     -webkit-animation: selectPersonBio .8s ease-out;
     -moz-animation: selectPersonBio .8s ease-out;
     -ms-animation: selectPersonBio .8s ease-out;
