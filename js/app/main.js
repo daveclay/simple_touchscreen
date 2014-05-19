@@ -120,6 +120,40 @@ define([
         var currentPosition = 0;
         var y = 0;
 
+        var handleGestureEvent = function(ev) {
+            ev.gesture.preventDefault();
+            var gesture = ev.gesture;
+            switch(ev.type) {
+                case 'dragup':
+                case 'dragdown':
+                    console.log("dragging");
+                    y = currentPosition + gesture.deltaY;
+                    uiElement.translate({
+                        y: y
+                    });
+                    break;
+
+                case 'swipeup':
+                case 'swipedown':
+                    gesture.stopDetect();
+                    var velocity = gesture.velocityY;
+                    var deltaY = gesture.deltaY;
+                    currentPosition = currentPosition + deltaY + deltaY;
+
+                    console.log("swipe: " + deltaY);
+                    uiElement.transition({
+                        y: currentPosition
+                    });
+                    break;
+
+                case 'dragend':
+                    gesture.stopDetect();
+                    console.log("dragend event, y: " + y + " current: " + currentPosition);
+                    currentPosition = y;
+                    break;
+            }
+        };
+
         var hammertime = Hammer(uiElement, {
             transform_always_block: true,
             transform_min_scale: 1,
@@ -128,59 +162,8 @@ define([
             drag_min_distance: 0
         });
 
-        hammertime.on('swipeup swipedown dragup dragdown release', function(ev) {
-            ev.gesture.preventDefault();
-            switch(ev.type) {
-                case 'dragup':
-                case 'dragdown':
-                    /*
-                    // stick to the finger
-                    var pane_offset = -(100/pane_count)*current_pane;
-                    var drag_offset = ((100/pane_width)*ev.gesture.deltaX) / pane_count;
-
-                    // slow down at the first and last pane
-                    if((current_pane == 0 && ev.gesture.direction == "down") ||
-                        (current_pane == pane_count-1 && ev.gesture.direction == "up")) {
-                        drag_offset *= .4;
-                    }
-
-                    setContainerOffset(drag_offset + pane_offset);
-                    */
-                    y = currentPosition + ev.gesture.deltaY;
-                    uiElement.translate({
-                        y: y
-                    });
-                    break;
-
-                case 'swipeup':
-                case 'swipedown':
-                    ev.gesture.stopDetect();
-
-                    var velocity = ev.gesture.velocityY + 200;
-                    uiElement.transition({
-                        y: velocity
-                    });
-                    break;
-
-                case 'release':
-                    // more then 50% moved, navigate
-                    currentPosition = y;
-                    console.log("current y: " + currentPosition);
-                    /*
-                    if(Math.abs(ev.gesture.deltaX) > pane_width/2) {
-                        if(ev.gesture.direction == 'right') {
-                            self.prev();
-                        } else {
-                            self.next();
-                        }
-                    }
-                    else {
-                        self.showPane(current_pane, true);
-                    }
-                    */
-                    break;
-            }
-
+        hammertime.on('swipeup swipedown dragup dragdown dragend', function(ev) {
+            handleGestureEvent(ev);
         });
 
         this.getUI = function() {
