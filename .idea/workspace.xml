@@ -33,20 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2640" max-vertical-offset="4016">
-              <caret line="204" column="98" selection-start-line="204" selection-start-column="98" selection-end-line="204" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.1875" vertical-offset="1883" max-vertical-offset="4160">
+              <caret line="128" column="50" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.036363635" vertical-offset="128" max-vertical-offset="2032">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2032">
               <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
               <folding />
             </state>
@@ -58,6 +58,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1472">
               <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="people.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/app/people.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -89,12 +99,12 @@
         <option value="$PROJECT_DIR$/css/template.css" />
         <option value="$PROJECT_DIR$/js/lib/Events.js" />
         <option value="$PROJECT_DIR$/hate.html" />
-        <option value="$PROJECT_DIR$/js/app/people.js" />
         <option value="$PROJECT_DIR$/js/lib/UI.js" />
         <option value="$PROJECT_DIR$/js/loader.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/app/main.js" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/js/app/people.js" />
+        <option value="$PROJECT_DIR$/js/app/main.js" />
       </list>
     </option>
   </component>
@@ -581,12 +591,12 @@
       <workItem from="1398059369285" duration="7979000" />
       <workItem from="1398117833646" duration="9271000" />
       <workItem from="1399685246687" duration="4996000" />
-      <workItem from="1400439226288" duration="10923000" />
+      <workItem from="1400439226288" duration="11866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41156000" />
+    <option name="totallyTimeSpent" value="42099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="85" y="22" width="1400" height="1003" extended-state="0" />
@@ -826,14 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/people.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14763552" vertical-offset="0" max-vertical-offset="867">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/lib/vendor/jquery.hammer-full.min.map">
       <provider editor-type-id="sourcemapFileViewerProvider">
         <state />
@@ -841,14 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.2608695" vertical-offset="0" max-vertical-offset="400">
-          <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
           <folding />
         </state>
       </provider>
@@ -861,6 +855,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.2608695" vertical-offset="0" max-vertical-offset="400">
+          <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app/people.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/lib/UI.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1472">
@@ -869,18 +879,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app/main.js">
+    <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2640" max-vertical-offset="4016">
-          <caret line="204" column="98" selection-start-line="204" selection-start-column="98" selection-end-line="204" selection-end-column="98" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2032">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/js/app/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.036363635" vertical-offset="128" max-vertical-offset="2032">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.1875" vertical-offset="1883" max-vertical-offset="4160">
+          <caret line="128" column="50" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
           <folding />
         </state>
       </provider>

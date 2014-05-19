@@ -37,6 +37,9 @@ define([
         };
 
         this.getPhoto = function() {
+            if (data.photo) {
+                return config.getImagePath() + data.photo;
+            }
             return config.getImagePath() + this.getId() + ".jpg";
         };
 
@@ -74,12 +77,6 @@ define([
                 infoUI.addClass("person-info-selected");
             }
         });
-
-        /*
-        uiElement.click(function() {
-            self.toggleName();
-        });
-        */
 
         uiElement.append(nameContainerUI);
         uiElement.append(infoUI);
@@ -129,10 +126,12 @@ define([
 
         this.getUIByElement = function(element) {
             var found = _.find(elementToUIs, function(item) {
-                return item.element[0] === element[0];
+                return item.element[0] === element;
             });
 
-            return found.ui;
+            if (found) {
+                return found.ui;
+            }
         };
 
     }
@@ -147,7 +146,12 @@ define([
         var y = 0;
 
         var findPersonUIFromTarget = function(target) {
-            var personDisplayElement = $(target).parents('.person-display');
+            var personDisplayElement;
+            if ($(target).containsCssClass("person-display")) {
+                personDisplayElement = target;
+            } else {
+                personDisplayElement = $(target).parents('.person-display')[0];
+            }
             return displayElementMap.getUIByElement(personDisplayElement);
         };
 
@@ -195,7 +199,12 @@ define([
                     console.log("tap");
                     var target = ev.target;
                     var ui = findPersonUIFromTarget(target);
-                    ui.toggleName();
+                    if (ui) {
+                        ui.toggleName();
+                    } else {
+                        console.log("Could not find ui for target");
+                        console.log(target);
+                    }
                     break;
             }
         };

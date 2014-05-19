@@ -13,21 +13,57 @@ define(function() {
             photo: "OliverSacks.jpg"
         },
         {
-            name: "Oliver Sacks",
+            name: "Roger McHam",
             bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
-            donation: "$100,000",
+            donation: "$20,000",
             photo: "OliverSacks.jpg"
         },
         {
-            name: "Oliver Sacks",
+            name: "Diane Forrester",
             bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
-            donation: "$100,000",
+            donation: "$10,000",
             photo: "OliverSacks.jpg"
         },
         {
-            name: "Oliver Sacks",
+            name: "Mark Ford",
             bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
-            donation: "$100,000",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "Gene Johnson",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "Theo Peterson",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "Gregory Hammond",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "James Benett",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "Jackson Clay",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
+            photo: "OliverSacks.jpg"
+        },
+        {
+            name: "Brenda Nicks",
+            bio: "Oliver Sacks was born in 1933 in London, England into a family of physicians and scientists (his mother was a surgeon and his father a general practitioner). He earned his medical degree at Oxford University (Queen’s College), and did residencies and fellowship work at Mt. Zion Hospital in San Francisco and at UCLA. Since 1965, he has lived in New York, where he is a practicing neurologist. From 2007 to 2012, he served as a Professor of Neurology and Psychiatry at Columbia University Medical Center, and he was also designated the university’s first Columbia University Artist. Dr. Sacks is currently a professor of neurology at the NYU School of Medicine, where he practices as part of the NYU Comprehensive Epilepsy Center. He is also a visiting professor at the University of Warwick.",
+            donation: "$10,000",
             photo: "OliverSacks.jpg"
         },
         {
