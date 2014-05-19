@@ -31,6 +31,23 @@ define([
                 containsCssClass: function(cssClass) {
                     var cssClasses = this.attr("class").split(" ");
                     return _.contains(cssClasses, cssClass);
+                },
+
+                translate: function(coordinates) {
+                    var x = coordinates.x || 0;
+                    var y = coordinates.y || 0;
+                    var z = coordinates.z || 0;
+                    var transform = "translate3d(" + x + "px," + y + "px, " + z + "px)";
+                    this.css({
+                        WebkitTransform: transform
+                    });
+                    /*
+                     uiElement.style.transform = transform;
+                     uiElement.style.oTransform = transform;
+                     uiElement.style.msTransform = transform;
+                     uiElement.style.mozTransform = transform;
+                     uiElement.style.webkitTransform = transform;
+                     */
                 }
             });
 

@@ -115,8 +115,8 @@ define([
         var uiElement = ui.div("display");
         var personDisplays = [];
 
-        var previousTop = 0;
-        var top = 0;
+        var currentPosition = 0;
+        var y = 0;
 
         var hammertime = Hammer(uiElement, {
             transform_always_block: true,
@@ -126,7 +126,7 @@ define([
             drag_min_distance: 0
         });
 
-        hammertime.on('dragup dragdown swipeup swipedown', function(ev) {
+        hammertime.on('dragup dragdown swipeup swipedown release', function(ev) {
             ev.gesture.preventDefault();
             switch(ev.type) {
                 case 'dragup':
@@ -144,18 +144,10 @@ define([
 
                     setContainerOffset(drag_offset + pane_offset);
                     */
-                    top = ev.gesture.deltaY;
-                    var transform = "translate3d(0px," + top + "px, 0)";
-                    uiElement.css({
-                        WebkitTransform: transform
+                    y = currentPosition + ev.gesture.deltaY;
+                    uiElement.translate({
+                        y: y
                     });
-                    /*
-                    uiElement.style.transform = transform;
-                    uiElement.style.oTransform = transform;
-                    uiElement.style.msTransform = transform;
-                    uiElement.style.mozTransform = transform;
-                    uiElement.style.webkitTransform = transform;
-                    */
                     break;
 
                 case 'swipeup':
@@ -170,7 +162,8 @@ define([
 
                 case 'release':
                     // more then 50% moved, navigate
-                    previousTop = top;
+                    currentPosition = y;
+                    console.log("current y: " + currentPosition);
                     /*
                     if(Math.abs(ev.gesture.deltaX) > pane_width/2) {
                         if(ev.gesture.direction == 'right') {
@@ -186,7 +179,6 @@ define([
                     break;
             }
 
-            console.log("top: " + top);
         });
 
         this.getUI = function() {
