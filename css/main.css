@@ -7,6 +7,10 @@ body {
     user-select: none;
 }
 
+div, img {
+    cursor: pointer;
+}
+
 .display {
 }
 .person-name {
