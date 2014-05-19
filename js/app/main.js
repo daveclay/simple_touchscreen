@@ -2,6 +2,7 @@ define([
     "underscore",
     "jquery",
     "hammer",
+    "transit",
     "ui",
     "events",
     "app/config",
@@ -9,6 +10,7 @@ define([
 ], function(_,
             $,
             hammer,
+            transit,
             ui,
             events,
             config,
@@ -126,7 +128,7 @@ define([
             drag_min_distance: 0
         });
 
-        hammertime.on('dragup dragdown swipeup swipedown release', function(ev) {
+        hammertime.on('swipeup swipedown dragup dragdown release', function(ev) {
             ev.gesture.preventDefault();
             switch(ev.type) {
                 case 'dragup':
@@ -151,13 +153,13 @@ define([
                     break;
 
                 case 'swipeup':
-                    console.log("swipeup");
-                    ev.gesture.stopDetect();
-                    break;
-
                 case 'swipedown':
-                    console.log("swipedown");
                     ev.gesture.stopDetect();
+
+                    var velocity = ev.gesture.velocityY + 200;
+                    uiElement.transition({
+                        y: velocity
+                    });
                     break;
 
                 case 'release':
