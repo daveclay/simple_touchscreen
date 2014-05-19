@@ -145,6 +145,11 @@ define([
         var currentPosition = 0;
         var y = 0;
 
+        var findPersonUIFromTarget = function(target) {
+            var personDisplayElement = $(target).parents('.person-display');
+            return displayElementMap.getUIByElement(personDisplayElement);
+        };
+
         var handleGestureEvent = function(ev) {
             ev.gesture.preventDefault();
             var gesture = ev.gesture;
@@ -153,6 +158,9 @@ define([
                 case 'dragdown':
                     console.log("dragging");
                     y = currentPosition + gesture.deltaY;
+                    if (y > 0) {
+                        y = 0;
+                    }
                     uiElement.translate({
                         y: y
                     });
@@ -162,7 +170,11 @@ define([
                 case 'swipedown':
                     gesture.stopDetect();
                     var deltaY = gesture.deltaY;
-                    currentPosition = currentPosition + deltaY + deltaY;
+                    var newPosition = currentPosition + deltaY + deltaY;
+                    if (newPosition > 0) {
+                        newPosition = 0;
+                    }
+                    currentPosition = newPosition;
 
                     // TODO: velocity will maybe just dictate how fast to move, not distance to move.
                     var velocity = gesture.velocityY;
@@ -181,9 +193,7 @@ define([
                 case 'tap':
                     console.log("tap");
                     var target = ev.target;
-                    // TODO: look up the target's parents to find the person-display
-                    var personDisplayElement = $(target).parents('.person-display');
-                    var ui = displayElementMap.getUIByElement(personDisplayElement);
+                    var ui = findPersonUIFromTarget(target);
                     ui.toggleName();
                     break;
             }
