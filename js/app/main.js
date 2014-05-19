@@ -74,12 +74,15 @@ define([
             }
         });
 
+        /*
         uiElement.click(function() {
             self.toggleName();
         });
+        */
 
         uiElement.append(nameContainerUI);
         uiElement.append(infoUI);
+        uiElement.display = this;
 
         this.getUI = function() {
             return uiElement;
@@ -112,10 +115,32 @@ define([
         };
     }
 
+    function DisplayElementMap() {
+        var self = this;
+        var elementToUIs = [];
+
+        this.addUI = function(ui, element) {
+            elementToUIs.push({
+                element: element,
+                ui: ui
+            });
+        };
+
+        this.getUIByElement = function(element) {
+            var found = _.find(elementToUIs, function(item) {
+                return item.element[0] === element[0];
+            });
+
+            return found.ui;
+        };
+
+    }
+
     function Display() {
         var self = this;
         var uiElement = ui.div("display");
         var personDisplays = [];
+        var displayElementMap = new DisplayElementMap();
 
         var currentPosition = 0;
         var y = 0;
@@ -136,9 +161,11 @@ define([
                 case 'swipeup':
                 case 'swipedown':
                     gesture.stopDetect();
-                    var velocity = gesture.velocityY;
                     var deltaY = gesture.deltaY;
                     currentPosition = currentPosition + deltaY + deltaY;
+
+                    // TODO: velocity will maybe just dictate how fast to move, not distance to move.
+                    var velocity = gesture.velocityY;
 
                     console.log("swipe: " + deltaY);
                     uiElement.transition({
@@ -151,6 +178,14 @@ define([
                     console.log("dragend event, y: " + y + " current: " + currentPosition);
                     currentPosition = y;
                     break;
+                case 'tap':
+                    console.log("tap");
+                    var target = ev.target;
+                    // TODO: look up the target's parents to find the person-display
+                    var personDisplayElement = $(target).parents('.person-display');
+                    var ui = displayElementMap.getUIByElement(personDisplayElement);
+                    ui.toggleName();
+                    break;
             }
         };
 
@@ -162,7 +197,7 @@ define([
             drag_min_distance: 0
         });
 
-        hammertime.on('swipeup swipedown dragup dragdown dragend', function(ev) {
+        hammertime.on('swipeup swipedown dragup dragdown dragend tap', function(ev) {
             handleGestureEvent(ev);
         });
 
@@ -178,13 +213,15 @@ define([
             });
         };
 
-        this.addPersonDisplay = function(personDisplay) {
-            personDisplay.on("select", function() {
-                self.deselectOthers(personDisplay);
+        this.addPersonDisplay = function(personUI) {
+            personUI.on("select", function() {
+                self.deselectOthers(personUI);
             });
 
-            personDisplays.push(personDisplay);
-            uiElement.append(personDisplay.getUI());
+            personDisplays.push(personUI);
+            var personUIElement = personUI.getUI();
+            uiElement.append(personUIElement);
+            displayElementMap.addUI(personUI, personUIElement);
         };
     }
 
