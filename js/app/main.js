@@ -61,6 +61,7 @@ define([
 
         var photoUI = ui.div("person-photo-container");
         var img = ui.img(person.getPhoto(), "person-photo");
+        img.on('dragstart', function(event) { event.preventDefault(); });
         photoUI.append(img);
 
         var infoUI = ui.div("person-info");
@@ -200,11 +201,8 @@ define([
         };
 
         var hammertime = Hammer(uiElement, {
-            transform_always_block: true,
-            transform_min_scale: 1,
-            drag_block_horizontal: true,
-            drag_block_vertical: true,
-            drag_min_distance: 0
+            tapMaxDistance: 10,
+            swipeVelocityY: .3 // this sort of adjusts for the velocity of the touchscreen hardware
         });
 
         hammertime.on('swipeup swipedown dragup dragdown dragend tap', function(ev) {
